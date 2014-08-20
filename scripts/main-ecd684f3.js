@@ -1,0 +1,1 @@
+"use strict";angular.module("myApp",["firebase"]),angular.module("myApp").controller("MainCtrl",["$scope","$firebase",function(e,a){var s=new Firebase("https://flipstewart.firebaseio.com/data"),r=a(s);e.messages=r.$asArray(),e.addMessage=function(a){e.messages.$add({text:a})}}]);
