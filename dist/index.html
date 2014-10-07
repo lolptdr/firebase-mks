@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="styles/main-6288745b.css">
+    <link rel="stylesheet" href="styles/main-bfb4ad15.css">
 
     <script src="scripts/modernizr-c1ff1650.js"></script>
   </head>
@@ -17,21 +17,38 @@
     <![endif]-->
 
     
-    <section ng-controller="MainCtrl">
-     <ul>
-       <li ng-repeat="message in messages">
-         <!-- exit a message -->
-         <input ng-model="message.text" ng-change="messages.$save(message)" />
-         <!-- delete message -->
-         <button ng-click="messages.$remove(message)">X</button>
-       </li>
-     </ul>
-     <!-- push a new message into the array -->
-     <form ng-submit="addMessage(newMessageText)">
-       <input ng-model="newMessageText" />
-       <button type="submit">add message</button>
-     </form>
+    <section ng-controller="ChatCtrl">
+      <ul>
+        <li ng-class="{ active:tab === 0 }">
+          <a href="" ng-click="tab = 0">Chat</a>
+        </li>
+        <li ng-class="{ active:tab === 1 }">
+          <a href="" ng-click="tab = 1">Search</a>
+        </li>
+      </ul>
+
+      <form>
+        <input type="email" ng-model="email">
+        <input type="password" ng-model="password">
+        <a href="#" ng-click="signIn()">Sign In</a>
+        <a href="#" ng-click="signUp()">Sign Up</a>
+      </form>
+
+      <section ng-show="tab === 0" >
+        <ul ng-include="'partials/messages.html'"></ul>
+        
+        <form ng-submit="addMessage(newMessageText)">
+          <input ng-model="newMessageText" />
+          <button type="submit">add message</button>
+        </form>
+
+      </section>
+      <section ng-show="tab === 1">
+        <ul ng-include="'partials/messages.html'"></ul>
+        <input type="text" placeholder="Search msgs here" ng-model="messageSearch">
+      </section>
     </section>
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -45,7 +62,7 @@
 
     <script src="scripts/vendor-d1a51b16.js"></script>
 
-    <script src="scripts/main-ecd684f3.js"></script>
+    <script src="scripts/main-ce4df191.js"></script>
 
   </body>
 </html>
