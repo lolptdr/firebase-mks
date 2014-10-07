@@ -1,0 +1,6 @@
+<li ng-repeat="message in messages | filter:messageSearch" ng-show="message.text">
+ <span>
+   {{ message.text }}
+ </span>
+ <button ng-click="messages.$remove(message)">X</button>
+</li>
